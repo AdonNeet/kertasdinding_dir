@@ -1,0 +1,1 @@
+# kertasdinding_dir
