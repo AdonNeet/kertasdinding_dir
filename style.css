@@ -18,8 +18,9 @@ body {
 }
 
 .directory {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
   padding: 10px;
   overflow-y: auto;
   flex: 1;
@@ -30,7 +31,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
+  padding: 10px;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 .file-item img {
@@ -40,4 +44,10 @@ body {
 
 .file-item span {
   margin-top: 5px;
+}
+
+.file-item a {
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
 }
