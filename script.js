@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
     files.forEach((file) => {
       const fileItem = document.createElement("div");
       fileItem.className = "file-item";
-      fileItem.style.transform = `scale(${scale})`;
 
       if (file.type === "image") {
         const img = document.createElement("img");
@@ -47,18 +46,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   scaleUpButton.addEventListener("click", () => {
-    scale += 0.1;
-    document.querySelectorAll(".file-item").forEach((item) => {
-      item.style.transform = `scale(${scale})`;
-    });
+    scale = Math.min(2, scale + 0.1); // Maksimum skala adalah 2x dari ukuran asli
+    updateScale();
   });
 
   scaleDownButton.addEventListener("click", () => {
-    scale = Math.max(0.1, scale - 0.1);
-    document.querySelectorAll(".file-item").forEach((item) => {
-      item.style.transform = `scale(${scale})`;
-    });
+    scale = Math.max(0.5, scale - 0.1); // Minimum skala adalah setengah dari ukuran asli
+    updateScale();
   });
+
+  function updateScale() {
+    directoryElement.style.transform = `scale(${scale})`;
+  }
 
   fetchDirectoryContents();
 });
